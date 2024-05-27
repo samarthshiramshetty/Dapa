@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DAPA</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="quiz-container">
+        <h1>DAPA</h1>
+        <div id="start-container">
+            <h2>Instructions</h2>
+            <p>1. The quiz consists of multiple categories.</p>
+            <p>2. Each question will be played as an audio file.</p>
+            <p>3. You will have 8 seconds to answer each question verbally.</p>
+            <p>4. If you answer within 3 seconds, you'll get 1 point.</p>
+            <p>5. If you answer between 3-6 seconds, you'll get  standard 1 point.</p>
+            <p>6. If you don't answer within 8 seconds, you'll get 1 point wrong.</p>
+            <input type="text" id="student-name" placeholder="Enter your name">
+            <button id="start-btn">Start Quiz</button>
+        </div>
+        <div id="quiz-content" style="display: none;">
+            <audio id="question-audio" controls></audio>
+            <img id="question-image" src="" alt="Question Image">
+            <div id="speech-container">
+                <button id="start-speech-btn">Start Speech Recognition</button>
+                <p id="speech-result"></p>
+            </div>
+            <button id="next-btn" disabled>Next</button>
+            <div id="timer">Time Left: <span id="time-left">8</span></div>
+            <div id="score-container">
+                <div id="instant-score">Instant Score: 0</div>
+                <div id="standard-score">Standard Score: 0</div>
+                <div id="wrong-score">Wrong Score: 0</div>
+            </div>
+        </div>
+        <div id="result-container" style="display: none;">
+            <h2>Result</h2>
+            <p id="student-details"></p>
+            <p id="final-score"></p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

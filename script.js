@@ -146,11 +146,6 @@ function startTimer() {
             stopTimer();
             wrongScore++;
             wrongScoreElement.textContent = `Wrong Score: ${wrongScore}`;
-            incorrectAnswers++;
-            if (incorrectAnswers >= 2) {
-                showResult();
-                return;
-            }
             nextQuestion();
         }
     }, 1000);

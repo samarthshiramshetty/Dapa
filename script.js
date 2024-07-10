@@ -6,42 +6,98 @@ const questions = [
             {
                 audio: 'cowboy.mp3',
                 image: 'cowboy.png',
-                expectedAnswer: 'cowboy'
+                expectedAnswer: 'cowboy',
+                scored: false
+            },
+            {
+                audio: 'cowboy1.mp3',
+                image: 'cowboy.png',
+                expectedAnswer: 'Boy',
+                scored: true
             },
             {
                 audio: 'airplane.mp3',
                 image: 'airplane.png',
-                expectedAnswer: 'Airplane'
+                expectedAnswer: 'Airplane',
+                scored: false
+            },
+            {
+                audio: 'airplane1.mp3',
+                image: 'airplane.png',
+                expectedAnswer: 'Air',
+                scored: true
             },
             {
                 audio: 'cap.mp3',
                 image: 'cap.png',
-                expectedAnswer: 'cap'
+                expectedAnswer: 'Cap',
+                scored: false
+            },
+            {
+                audio: 'cap1.mp3',
+                image: 'cap.png',
+                expectedAnswer: 'App',
+                scored: true
             },
             {
                 audio: 'sit.mp3',
                 image: 'sit.png',
-                expectedAnswer: 'sit'
+                expectedAnswer: 'Sit',
+                scored: false
+            },
+            {
+                audio: 'sit1.mp3',
+                image: 'sit.png',
+                expectedAnswer: 'it',
+                scored: true
             },
             {
                 audio: 'bear.mp3',
                 image: 'bear.png',
-                expectedAnswer: 'bear'
+                expectedAnswer: 'Bear',
+                scored: false
+            },
+            {
+                audio: 'bear1.mp3',
+                image: 'bear.png',
+                expectedAnswer: 'air',
+                scored: true
             },
             {
                 audio: 'paid.mp3',
                 image: 'paid.png',
-                expectedAnswer: 'paid'
+                expectedAnswer: 'paid',
+                scored: false
+            },
+            {
+                audio: 'paid1.mp3',
+                image: 'paid.png',
+                expectedAnswer: 'aid',
+                scored: true
             },
             {
                 audio: 'rake.mp3',
                 image: 'rake.png',
-                expectedAnswer: 'rake'
+                expectedAnswer: 'rake',
+                scored: false
+            },
+            {
+                audio: 'rake1.mp3',
+                image: 'rake.png',
+                expectedAnswer: 'Take',
+                scored: true
             },
             {
                 audio: 'farm.mp3',
                 image: 'farm.png',
-                expectedAnswer: 'farm'
+                expectedAnswer: 'farm',
+                scored: false
+            },
+            {
+                audio: 'farm1.mp3',
+                image: 'farm.png',
+                expectedAnswer: 'arm',
+                scored: true
             }
         ]
     },
@@ -51,42 +107,98 @@ const questions = [
             {
                 audio: 'seed.mp3',
                 image: 'seed.png',
-                expectedAnswer: 'seed'
+                expectedAnswer: 'seed',
+                scored: false
+            },
+            {
+                audio: 'seed1.mp3',
+                image: 'seed.png',
+                expectedAnswer: 'seem',
+                scored: true
             },
             {
                 audio: 'beak.mp3',
                 image: 'beak.png',
-                expectedAnswer: 'beak'
+                expectedAnswer: 'beak',
+                scored: false
+            },
+            {
+                audio: 'beak1.mp3',
+                image: 'beak.png',
+                expectedAnswer: 'bee',
+                scored: true
             },
             {
                 audio: 'train.mp3',
                 image: 'train.png',
-                expectedAnswer: 'train'
+                expectedAnswer: 'train',
+                scored: false
+            },
+            {
+                audio: 'train1.mp3',
+                image: 'train.png',
+                expectedAnswer: 'trai',
+                scored: true
             },
             {
                 audio: 'wave.mp3',
                 image: 'wave.png',
-                expectedAnswer: 'wave'
+                expectedAnswer: 'wave',
+                scored: false
+            },
+            {
+                audio: 'wave1.mp3',
+                image: 'wave.png',
+                expectedAnswer: 'wade',
+                scored: true
             },
             {
                 audio: 'hat.mp3',
                 image: 'hat.png',
-                expectedAnswer: 'hat'
+                expectedAnswer: 'hat',
+                scored: false
+            },
+            {
+                audio: 'hat1.mp3',
+                image: 'hat.png',
+                expectedAnswer: 'haa',
+                scored: true
             },
             {
                 audio: 'pot.mp3',
                 image: 'pot.png',
-                expectedAnswer: 'pot'
+                expectedAnswer: 'pot',
+                scored: false
+            },
+            {
+                audio: 'pot1.mp3',
+                image: 'pot.png',
+                expectedAnswer: 'pat',
+                scored: true
             },
             {
                 audio: 'bag.mp3',
                 image: 'bag.png',
-                expectedAnswer: 'bag'
+                expectedAnswer: 'bag',
+                scored: false
+            },
+            {
+                audio: 'bag1.mp3',
+                image: 'bag.png',
+                expectedAnswer: 'bit',
+                scored: true
             },
             {
                 audio: 'bat.mp3',
                 image: 'bat.png',
-                expectedAnswer: 'bat'
+                expectedAnswer: 'bat',
+                scored: false
+            },
+            {
+                audio: 'bat1.mp3',
+                image: 'bat.png',
+                expectedAnswer: 'bit',
+                scored: true
             }
         ]
     },
@@ -96,42 +208,98 @@ const questions = [
             {
                 audio: 'bride.mp3',
                 image: 'bride.png',
-                expectedAnswer: 'Bride'
+                expectedAnswer: 'Bride',
+                scored: false
+            },
+            {
+                audio: 'bride1.mp3',
+                image: 'bride.png',
+                expectedAnswer: 'ride',
+                scored: true
             },
             {
                 audio: 'glad.mp3',
                 image: 'glad.png',
-                expectedAnswer: 'glad'
+                expectedAnswer: 'glad',
+                scored: false
+            },
+            {
+                audio: 'glad1.mp3',
+                image: 'glad.png',
+                expectedAnswer: 'lad',
+                scored: true
             },
             {
                 audio: 'crate.mp3',
                 image: 'crate.png',
-                expectedAnswer: 'crate'
+                expectedAnswer: 'crate',
+                scored: false
+            },
+            {
+                audio: 'crate1.mp3',
+                image: 'crate.png',
+                expectedAnswer: 'ate',
+                scored: true
             },
             {
                 audio: 'broom.mp3',
                 image: 'broom.png',
-                expectedAnswer: 'broom'
+                expectedAnswer: 'Broom',
+                scored: false
+            },
+            {
+                audio: 'broom1.mp3',
+                image: 'broom.png',
+                expectedAnswer: 'room',
+                scored: true
+            },
+            {
+                audio: 'bride.mp3',
+                image: 'bride.png',
+                expectedAnswer: 'Bride',
+                scored: false
+            },
+            {
+                audio: 'bride1.mp3',
+                image: 'bride.png',
+                expectedAnswer: 'Ride',
+                scored: true
             },
             {
                 audio: 'grass.mp3',
                 image: 'grass.png',
-                expectedAnswer: 'grass'
+                expectedAnswer: 'grass',
+                scored: false
+            },
+            {
+                audio: 'grass1.mp3',
+                image: 'grass.png',
+                expectedAnswer: 'grove',
+                scored: true
             },
             {
                 audio: 'smell.mp3',
                 image: 'smell.png',
-                expectedAnswer: 'smell'
+                expectedAnswer: 'smell',
+                scored: false
             },
             {
-                audio: 'skip.mp3',
-                image: 'skip.png',
-                expectedAnswer: 'skip'
+                audio: 'smell1.mp3',
+                image: 'smell.png',
+                expectedAnswer: 'spell',
+                scored: true
             },
             {
                 audio: 'swim.mp3',
                 image: 'swim.png',
-                expectedAnswer: 'swim'
+                expectedAnswer: 'swim',
+                scored: false
+            },
+            {
+                audio: 'swim1.mp3',
+                image: 'swim.png',
+                expectedAnswer: 'swe',
+                scored: true
             }
         ]
     }
@@ -218,14 +386,16 @@ function handleSpeechRecognition() {
         if (transcript.includes(expectedAnswer)) {
             stopTimer();
             const answerTime = 10 - timeLeft;
-            if (answerTime <= 3) {
-                instantScore++;
-                categoryScores[currentCategory].instant++;
-                instantScoreElement.textContent = `Instant Score: ${instantScore}`;
-            } else if (answerTime > 3 && answerTime <= 10) {
-                standardScore++;
-                categoryScores[currentCategory].standard++;
-                standardScoreElement.textContent = `Standard Score: ${standardScore}`;
+            if (question.scored) {
+                if (answerTime <= 3) {
+                    instantScore++;
+                    categoryScores[currentCategory].instant++;
+                    instantScoreElement.textContent = `Instant Score: ${instantScore}`;
+                } else if (answerTime > 5 && answerTime <= 10) {
+                    standardScore++;
+                    categoryScores[currentCategory].standard++;
+                    standardScoreElement.textContent = `Standard Score: ${standardScore}`;
+                }
             }
             nextBtn.disabled = false;
             recognition.stop();
@@ -243,9 +413,12 @@ function startTimer() {
 
         if (timeLeft === 0) {
             stopTimer();
-            wrongScore++;
-            categoryScores[currentCategory].wrong++;
-            wrongScoreElement.textContent = `Wrong Score: ${wrongScore}`;
+            const question = questions[currentCategory].questions[currentQuestion];
+            if (question.scored) {
+                wrongScore++;
+                categoryScores[currentCategory].wrong++;
+                wrongScoreElement.textContent = `Wrong Score: ${wrongScore}`;
+            }
             nextQuestion();
         }
     }, 1000);

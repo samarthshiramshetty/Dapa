@@ -18,7 +18,7 @@ const questions = [
             {
                 audio: 'airplane.mp3',
                 image: 'airplane.png',
-                expectedAnswer: 'Airplane',
+                expectedAnswer: 'Aeroplane',
                 scored: false
             },
             {
@@ -96,7 +96,7 @@ const questions = [
             {
                 audio: 'farm1.mp3',
                 image: 'farm.png',
-                expectedAnswer: 'arm',
+                expectedAnswer: 'far',
                 scored: true
             }
         ]
@@ -125,7 +125,7 @@ const questions = [
             {
                 audio: 'beak1.mp3',
                 image: 'beak.png',
-                expectedAnswer: 'bee',
+                expectedAnswer: 'b',
                 scored: true
             },
             {
@@ -137,7 +137,7 @@ const questions = [
             {
                 audio: 'train1.mp3',
                 image: 'train.png',
-                expectedAnswer: 'trai',
+                expectedAnswer: 'tray',
                 scored: true
             },
             {
@@ -161,7 +161,7 @@ const questions = [
             {
                 audio: 'hat1.mp3',
                 image: 'hat.png',
-                expectedAnswer: 'haa',
+                expectedAnswer: 'ha ha',
                 scored: true
             },
             {
@@ -254,18 +254,6 @@ const questions = [
                 scored: true
             },
             {
-                audio: 'bride.mp3',
-                image: 'bride.png',
-                expectedAnswer: 'Bride',
-                scored: false
-            },
-            {
-                audio: 'bride1.mp3',
-                image: 'bride.png',
-                expectedAnswer: 'Ride',
-                scored: true
-            },
-            {
                 audio: 'grass.mp3',
                 image: 'grass.png',
                 expectedAnswer: 'grass',
@@ -298,7 +286,7 @@ const questions = [
             {
                 audio: 'swim1.mp3',
                 image: 'swim.png',
-                expectedAnswer: 'swe',
+                expectedAnswer: 'swear',
                 scored: true
             }
         ]

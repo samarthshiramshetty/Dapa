@@ -293,6 +293,7 @@ const questions = [
     }
 ];
 
+
 // Define variables
 let currentCategory = 0;
 let currentQuestion = 0;
@@ -329,6 +330,18 @@ const categoryScores = [
     { instant: 0, standard: 0, wrong: 0 }
 ];
 
+// Function to validate questions
+function validateQuestions() {
+    questions.forEach((category, catIndex) => {
+        console.log(`Category ${catIndex + 1}:`);
+        category.questions.forEach((question, qIndex) => {
+            console.log(`  Question ${qIndex + 1}:`);
+            console.log(`    Expected Answer: ${question.expectedAnswer}`);
+            console.log(`    Scored: ${question.scored}`);
+        });
+    });
+}
+
 // Function to start the quiz
 function startQuiz() {
     studentName = document.getElementById('student-name').value;
@@ -336,6 +349,13 @@ function startQuiz() {
         uniqueNumber = Math.floor(Math.random() * 1000000);
         startContainer.style.display = 'none';
         quizContent.style.display = 'block';
+        instantScore = 0;
+        standardScore = 0;
+        wrongScore = 0;
+        instantScoreElement.textContent = `Instant Score: ${instantScore}`;
+        standardScoreElement.textContent = `Standard Score: ${standardScore}`;
+        wrongScoreElement.textContent = `Wrong Score: ${wrongScore}`;
+        validateQuestions();
         renderQuestion();
     } else {
         alert('Please enter your name');
@@ -348,6 +368,10 @@ function renderQuestion() {
     const question = category.questions[currentQuestion];
     audioElement.src = question.audio;
     imageElement.src = question.image;
+
+    console.log(`Rendering question ${currentQuestion + 1} of category ${currentCategory + 1}`);
+    console.log(`Expected answer: ${question.expectedAnswer}`);
+    console.log(`Scored: ${question.scored}`);
 
     nextBtn.disabled = true;
     timeLeft = 10;
@@ -370,21 +394,30 @@ function handleSpeechRecognition() {
     recognition.onresult = (event) => {
         const transcript = event.results[event.resultIndex][0].transcript.toLowerCase();
         speechResult.textContent = transcript;
+        console.log(`Question ${currentQuestion + 1}: Expected "${expectedAnswer}", Got "${transcript}"`);
 
         if (transcript.includes(expectedAnswer)) {
             stopTimer();
             const answerTime = 10 - timeLeft;
+            console.log(`Correct answer given in ${answerTime} seconds`);
+            
             if (question.scored) {
+                console.log(`This is a scored question (${currentQuestion + 1})`);
                 if (answerTime <= 3) {
                     instantScore++;
                     categoryScores[currentCategory].instant++;
-                    instantScoreElement.textContent = `Instant Score: ${instantScore}`;
+                    console.log(`Instant score updated: ${instantScore}`);
                 } else if (answerTime > 5 && answerTime <= 10) {
                     standardScore++;
                     categoryScores[currentCategory].standard++;
-                    standardScoreElement.textContent = `Standard Score: ${standardScore}`;
+                    console.log(`Standard score updated: ${standardScore}`);
                 }
+                instantScoreElement.textContent = `Instant Score: ${instantScore}`;
+                standardScoreElement.textContent = `Standard Score: ${standardScore}`;
+            } else {
+                console.log(`This is not a scored question (${currentQuestion + 1})`);
             }
+            
             nextBtn.disabled = false;
             recognition.stop();
         }

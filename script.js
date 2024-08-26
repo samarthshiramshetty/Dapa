@@ -4,30 +4,6 @@ const questions = [
         category: 'Category 1',
         questions: [
             {
-                audio: 'cowboy.mp3',
-                image: 'cowboy.png',
-                expectedAnswer: 'cowboy',
-                scored: false
-            },
-            {
-                audio: 'cowboy1.mp3',
-                image: 'cowboy.png',
-                expectedAnswer: 'Boy',
-                scored: true
-            },
-            {
-                audio: 'airplane.mp3',
-                image: 'airplane.png',
-                expectedAnswer: 'Aeroplane',
-                scored: false
-            },
-            {
-                audio: 'airplane1.mp3',
-                image: 'airplane.png',
-                expectedAnswer: 'Air',
-                scored: true
-            },
-            {
                 audio: 'cap.mp3',
                 image: 'cap.png',
                 expectedAnswer: 'Cap',

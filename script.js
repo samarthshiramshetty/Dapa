@@ -311,7 +311,6 @@ const audioElement = document.getElementById('question-audio');
 const imageElement = document.getElementById('question-image');
 const speechContainer = document.getElementById('speech-container');
 const speechResult = document.getElementById('speech-result');
-const nextBtn = document.getElementById('next-btn');
 const timeLeftElement = document.getElementById('time-left');
 const instantScoreElement = document.getElementById('instant-score');
 const standardScoreElement = document.getElementById('standard-score');
@@ -322,6 +321,8 @@ const quizContent = document.getElementById('quiz-content');
 const resultContainer = document.getElementById('result-container');
 const studentDetails = document.getElementById('student-details');
 const finalScore = document.getElementById('final-score');
+const loadingElement = document.getElementById('loading');
+const errorMessageElement = document.getElementById('error-message');
 
 // Initialize category scores
 const categoryScores = [
@@ -330,16 +331,25 @@ const categoryScores = [
     { instant: 0, standard: 0, wrong: 0 }
 ];
 
-// Function to validate questions
-function validateQuestions() {
-    questions.forEach((category, catIndex) => {
-        console.log(`Category ${catIndex + 1}:`);
-        category.questions.forEach((question, qIndex) => {
-            console.log(`  Question ${qIndex + 1}:`);
-            console.log(`    Expected Answer: ${question.expectedAnswer}`);
-            console.log(`    Scored: ${question.scored}`);
-        });
-    });
+// Function to show loading indicator
+function showLoading() {
+    loadingElement.style.display = 'block';
+}
+
+// Function to hide loading indicator
+function hideLoading() {
+    loadingElement.style.display = 'none';
+}
+
+// Function to show error message
+function showError(message) {
+    errorMessageElement.textContent = message;
+    errorMessageElement.style.display = 'block';
+}
+
+// Function to hide error message
+function hideError() {
+    errorMessageElement.style.display = 'none';
 }
 
 // Function to start the quiz
@@ -349,40 +359,53 @@ function startQuiz() {
         uniqueNumber = Math.floor(Math.random() * 1000000);
         startContainer.style.display = 'none';
         quizContent.style.display = 'block';
-        instantScore = 0;
-        standardScore = 0;
-        wrongScore = 0;
-        instantScoreElement.textContent = `Instant Score: ${instantScore}`;
-        standardScoreElement.textContent = `Standard Score: ${standardScore}`;
-        wrongScoreElement.textContent = `Wrong Score: ${wrongScore}`;
-        validateQuestions();
         renderQuestion();
     } else {
-        alert('Please enter your name');
+        showError('Please enter your name');
     }
 }
 
 // Function to render the question and options
 function renderQuestion() {
+    showLoading();
+    hideError();
     const category = questions[currentCategory];
     const question = category.questions[currentQuestion];
     audioElement.src = question.audio;
     imageElement.src = question.image;
 
-    console.log(`Rendering question ${currentQuestion + 1} of category ${currentCategory + 1}`);
-    console.log(`Expected answer: ${question.expectedAnswer}`);
-    console.log(`Scored: ${question.scored}`);
-
-    nextBtn.disabled = true;
     timeLeft = 10;
     timeLeftElement.textContent = timeLeft;
-    audioElement.play();
-    startTimer();
-    handleSpeechRecognition();
+    
+    audioElement.oncanplaythrough = function() {
+        hideLoading();
+        audioElement.play().then(() => {
+            startTimer();
+            handleSpeechRecognition();
+        }).catch(error => {
+            console.error("Error playing audio: ", error);
+            showError("Error playing audio. Please try again.");
+        });
+    };
+
+    audioElement.onerror = function() {
+        console.error("Error loading audio file: " + audioElement.src);
+        showError("Error loading audio. Please try again.");
+        hideLoading();
+    };
+
+    console.log("Current category:", currentCategory);
+    console.log("Current question:", currentQuestion);
 }
 
 // Function to handle speech recognition
+// Function to handle speech recognition
 function handleSpeechRecognition() {
+    if (!('webkitSpeechRecognition' in window)) {
+        showError("Your browser doesn't support speech recognition. Please use a modern browser like Chrome.");
+        return;
+    }
+
     const category = questions[currentCategory];
     const question = category.questions[currentQuestion];
     const expectedAnswer = question.expectedAnswer.toLowerCase();
@@ -394,38 +417,48 @@ function handleSpeechRecognition() {
     recognition.onresult = (event) => {
         const transcript = event.results[event.resultIndex][0].transcript.toLowerCase();
         speechResult.textContent = transcript;
-        console.log(`Question ${currentQuestion + 1}: Expected "${expectedAnswer}", Got "${transcript}"`);
+        console.log("Speech result:", transcript);
 
         if (transcript.includes(expectedAnswer)) {
             stopTimer();
             const answerTime = 10 - timeLeft;
-            console.log(`Correct answer given in ${answerTime} seconds`);
             
+            // Check if it's an even-numbered question (scored)
             if (question.scored) {
-                console.log(`This is a scored question (${currentQuestion + 1})`);
+                console.log("Correct answer for scored question");
                 if (answerTime <= 3) {
                     instantScore++;
                     categoryScores[currentCategory].instant++;
-                    console.log(`Instant score updated: ${instantScore}`);
+                    instantScoreElement.textContent = `Instant Score: ${instantScore}`;
+                    console.log("Instant score updated:", instantScore);
                 } else if (answerTime > 5 && answerTime <= 10) {
                     standardScore++;
                     categoryScores[currentCategory].standard++;
-                    console.log(`Standard score updated: ${standardScore}`);
+                    standardScoreElement.textContent = `Standard Score: ${standardScore}`;
+                    console.log("Standard score updated:", standardScore);
                 }
-                instantScoreElement.textContent = `Instant Score: ${instantScore}`;
-                standardScoreElement.textContent = `Standard Score: ${standardScore}`;
             } else {
-                console.log(`This is not a scored question (${currentQuestion + 1})`);
+                console.log("Correct answer for non-scored question");
             }
             
-            nextBtn.disabled = false;
             recognition.stop();
+            // Automatically move to the next question
+            setTimeout(nextQuestion, 1000); // Wait 1 second before moving to the next question
         }
+    };
+
+    recognition.onerror = function(event) {
+        console.error("Speech recognition error: " + event.error);
+        if (event.error === 'not-allowed') {
+            document.getElementById('mic-instructions').style.display = 'block';
+        }
+        showError("Speech recognition error. Please try again.");
     };
 
     recognition.start();
 }
 
+// Function to start the timer
 // Function to start the timer
 function startTimer() {
     timer = setInterval(() => {
@@ -439,8 +472,11 @@ function startTimer() {
                 wrongScore++;
                 categoryScores[currentCategory].wrong++;
                 wrongScoreElement.textContent = `Wrong Score: ${wrongScore}`;
+                console.log("Wrong score updated:", wrongScore);
+            } else {
+                console.log("Time's up for non-scored question");
             }
-            nextQuestion();
+            setTimeout(nextQuestion, 1000); // Wait 1 second before moving to the next question
         }
     }, 1000);
 }
@@ -507,5 +543,4 @@ function generateReport() {
 
 // Add event listeners
 startBtn.addEventListener('click', startQuiz);
-nextBtn.addEventListener('click', nextQuestion);
 document.getElementById('generate-report-btn').addEventListener('click', generateReport);

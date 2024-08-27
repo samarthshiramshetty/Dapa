@@ -13,7 +13,7 @@ const questions = [
                 audio: 'cap1.mp3',
                 image: 'cap.png',
                 expectedAnswer: 'App',
-                scored: true
+                scored: false
             },
             {
                 audio: 'sit.mp3',
@@ -25,7 +25,7 @@ const questions = [
                 audio: 'sit1.mp3',
                 image: 'sit.png',
                 expectedAnswer: 'it',
-                scored: true
+                scored: false
             },
             {
                 audio: 'bear.mp3',
@@ -72,8 +72,8 @@ const questions = [
             {
                 audio: 'farm1.mp3',
                 image: 'farm.png',
-                expectedAnswer: 'far',
-                scored: true
+                expectedAnswer: 'arm',
+                scored: false
             }
         ]
     },
@@ -90,7 +90,7 @@ const questions = [
                 audio: 'seed1.mp3',
                 image: 'seed.png',
                 expectedAnswer: 'seem',
-                scored: true
+                scored: false
             },
             {
                 audio: 'beak.mp3',
@@ -101,7 +101,7 @@ const questions = [
             {
                 audio: 'beak1.mp3',
                 image: 'beak.png',
-                expectedAnswer: 'b',
+                expectedAnswer: 'bee',
                 scored: true
             },
             {
@@ -137,8 +137,8 @@ const questions = [
             {
                 audio: 'hat1.mp3',
                 image: 'hat.png',
-                expectedAnswer: 'ha ha',
-                scored: true
+                expectedAnswer: 'haa',
+                scored: false
             },
             {
                 audio: 'pot.mp3',
@@ -191,7 +191,7 @@ const questions = [
                 audio: 'bride1.mp3',
                 image: 'bride.png',
                 expectedAnswer: 'ride',
-                scored: true
+                scored: false
             },
             {
                 audio: 'glad.mp3',
@@ -230,6 +230,18 @@ const questions = [
                 scored: true
             },
             {
+                audio: 'bride.mp3',
+                image: 'bride.png',
+                expectedAnswer: 'Bride',
+                scored: false
+            },
+            {
+                audio: 'bride1.mp3',
+                image: 'bride.png',
+                expectedAnswer: 'Ride',
+                scored: false
+            },
+            {
                 audio: 'grass.mp3',
                 image: 'grass.png',
                 expectedAnswer: 'grass',
@@ -239,7 +251,7 @@ const questions = [
                 audio: 'grass1.mp3',
                 image: 'grass.png',
                 expectedAnswer: 'grove',
-                scored: true
+                scored: false
             },
             {
                 audio: 'smell.mp3',
@@ -262,7 +274,7 @@ const questions = [
             {
                 audio: 'swim1.mp3',
                 image: 'swim.png',
-                expectedAnswer: 'swear',
+                expectedAnswer: 'swe',
                 scored: true
             }
         ]
